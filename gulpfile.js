@@ -223,8 +223,7 @@ gulp.task('build', function(cb){
         "bootstrap:build",
         "js:build",
         "fonts:build",
-        "image:build",
-        "sprite"
+        "image:build"
         , cb);
 });
 
@@ -250,9 +249,6 @@ gulp.task("watch", function(){
     });
     watch([path.watch.fonts], function(event, cb){
         gulp.start("fonts:build");
-    });
-    watch(['src/img/icons/*.*'], function(event, cb){
-        gulp.start("sprite");
     });
 });
 
