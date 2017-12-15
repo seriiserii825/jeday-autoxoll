@@ -13,6 +13,7 @@ let gulp = require("gulp"),
     watch = require("gulp-watch"),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require("gulp-plumber"),
+    spritesmith = require('gulp.spritesmith'),
     imagemin = require("gulp-imagemin"),
     run = require("run-sequence"),
     newer = require('gulp-newer'),
@@ -194,6 +195,18 @@ gulp.task("image:build", function(){
         .pipe(gulp.dest(path.build.img));
 });
 
+gulp.task('sprite', function(){
+    let spriteData = gulp.src('src/assets/i/icons/*.*')
+        .pipe(spritesmith({
+            imgName: '../i/sprite.png',
+            cssName: 'sprite.scss',
+            cssFormat: 'scss',
+            algorithm: 'binary-tree',
+            padding: 20
+        }));
+    spriteData.img.pipe(gulp.dest('src/assets/i'));
+    spriteData.css.pipe(gulp.dest('src/assets/sass/partials/'));
+});
 
 gulp.task("clean", function(cb){
     rimraf(path.clean, cb);
@@ -210,7 +223,8 @@ gulp.task('build', function(cb){
         "bootstrap:build",
         "js:build",
         "fonts:build",
-        "image:build"
+        "image:build",
+        "sprite"
         , cb);
 });
 
@@ -237,6 +251,9 @@ gulp.task("watch", function(){
     watch([path.watch.fonts], function(event, cb){
         gulp.start("fonts:build");
     });
+    watch(['src/img/icons/*.*'], function(event, cb){
+        gulp.start("sprite");
+    });
 });
 
 
@@ -248,3 +265,5 @@ gulp.task("default", function(cb){
         "watch"
         , cb);
 });
+
+

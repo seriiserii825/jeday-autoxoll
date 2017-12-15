@@ -8,6 +8,7 @@
 @import "../sass/partials/templates";
 @import "../../../node_modules/bootstrap/scss/bootstrap-reboot";
 @import "../../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../sass/partials/sprite";
 
 html,
 body {
@@ -16,4 +17,10 @@ body {
 
 body {
   @include roboto;
+}
+.icon {
+  display: inline-block;
+}
+.icon-map {
+  @include sprite($s-01-map);
 }
