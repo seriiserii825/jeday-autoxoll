@@ -62,12 +62,15 @@ ul {
 }
 
 .header-main {
-  position: relative;
-  margin-bottom: -7px;
-  min-height: 670px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
-  background: url("../i/header-top.jpg") no-repeat center;
-  background-size: cover;
+  &-top {
+    flex-grow: 1;
+    background: url("../i/header-top.jpg") no-repeat center;
+    background-size: cover;
+  }
 }
 
 .header-top {
@@ -132,7 +135,7 @@ ul {
 .buttons {
   position: absolute;
   left: 0;
-  bottom: 35px;
+  bottom: 90px;
   width: 100%;
 
   &-wrap {

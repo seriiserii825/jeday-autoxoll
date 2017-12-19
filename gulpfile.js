@@ -90,6 +90,12 @@ gulp.task("libs:build", function(){
         .pipe(browserSync.stream());
 });
 
+gulp.task("favicon:build", function(){
+    return gulp.src("src/favicon.ico")
+        .pipe(gulp.dest("build/"))
+        .pipe(browserSync.stream());
+});
+
 gulp.task("css:build", function(){
     gulp.src(path.src.css)
         .pipe(sourcemaps.init())
@@ -221,6 +227,7 @@ gulp.task('build', function(cb){
         "header:build",
         "libs:build",
         "bootstrap:build",
+        "favicon:build",
         "js:build",
         "fonts:build",
         "image:build"
