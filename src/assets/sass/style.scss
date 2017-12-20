@@ -14,7 +14,6 @@
 
 html,
 body {
-  margin-bottom: 500px;
   font-size: 14px;
 }
 
@@ -279,6 +278,105 @@ ul {
       color: $white;
       font-size: 20px;
       text-decoration: underline;
+    }
+  }
+}
+
+.light {
+  .section-header {
+    padding: 40px;
+    color: $text-color;
+    background: $bg-super-light;
+
+    .section-title {
+      position: relative;
+      display: table;
+      margin: 0 auto;
+      font-size: 40px;
+      text-transform: uppercase;
+    }
+
+    .section-text {
+      margin: 0 auto;
+      max-width:  780px;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  .gallery {
+    padding:  45px 0 60px;
+    background: $bg-light;
+
+    &--item {
+      margin-bottom: 60px;
+
+      &-text {
+        padding-top: 20px;
+        @include robotobold;
+        text-align: center;
+      }
+    }
+    
+    .img-wrap {
+      border-top:  8px solid $accent;
+      opacity: .8;
+      transition: all .6s ease;
+
+      &:hover {
+        opacity: 1;
+        box-shadow: 0 10px 20px 0 rgba(0,0,0,.4);
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/*================== bottom ===========================*/
+.bottom {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+    width: 100%;
+  }
+  
+  .bottom-title {
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+}
+
+/*================== footer ===========================*/
+.footer-main {
+  padding: 30px 0;
+  @inculde bebasregular;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: $white;
+  background: #2a2a2a;
+  .footer-inner {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .menu {
+    li {
+      display: inline-block;
+      vertical-align: top;
+    }
+    a{
+      padding: 0 10px;
+      text-decoration: underline;
+      color: inherit;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
