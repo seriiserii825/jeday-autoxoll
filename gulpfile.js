@@ -191,7 +191,8 @@ gulp.task('fontgen', function(){
 
 gulp.task("image:build", function(){
     gulp.src(path.src.img)
-        .pipe(newer('build/img'))
+        .pipe(plumber())
+        .pipe(newer('build/assets/i/'))
         .pipe(imagemin({
             optimizationLevel: 3,
             progressive: true,
@@ -202,7 +203,8 @@ gulp.task("image:build", function(){
 });
 
 gulp.task('sprite', function(){
-    let spriteData = gulp.src('src/assets/i/icons/*.*')
+    let spriteData = gulp.src('src/assets/i/icons/**/*.*')
+        .pipe(plumber())
         .pipe(spritesmith({
             imgName: '../i/sprite.png',
             cssName: 'sprite.scss',
@@ -230,7 +232,8 @@ gulp.task('build', function(cb){
         "favicon:build",
         "js:build",
         "fonts:build",
-        "image:build"
+        "image:build",
+        "sprite"
         , cb);
 });
 
@@ -256,6 +259,9 @@ gulp.task("watch", function(){
     });
     watch([path.watch.fonts], function(event, cb){
         gulp.start("fonts:build");
+    });
+    watch(["src/assets/i/icons/**/*.*"], function(event, cb){
+        gulp.start("sprite");
     });
 });
 

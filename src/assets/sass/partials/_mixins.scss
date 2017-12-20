@@ -24,4 +24,8 @@
 @mixin bebasregular {
   font-family: "BebasRegular", sans-serif;
 }
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
 
